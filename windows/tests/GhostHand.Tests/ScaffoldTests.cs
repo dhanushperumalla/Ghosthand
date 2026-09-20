@@ -1,6 +1,8 @@
 using FluentAssertions;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace GhostHand.Tests;
 
 public class ScaffoldTests
