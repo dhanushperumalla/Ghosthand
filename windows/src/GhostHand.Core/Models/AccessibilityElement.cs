@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace ThirdHandWin.Core.Models;
+namespace GhostHand.Core.Models;
 
 /// <summary>
 /// Platform-independent representation of a readable UI control or OCR detection on screen.

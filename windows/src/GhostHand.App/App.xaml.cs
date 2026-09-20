@@ -2,12 +2,12 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace ThirdHandWin.App;
+namespace GhostHand.App;
 
 public partial class App : Application
 {
     private static Mutex? _singleInstanceMutex;
-    private const string MutexName = "Global\\ThirdHandWin_SingleInstance_Mutex_2026";
+    private const string MutexName = "Global\\GhostHand_SingleInstance_Mutex_2026";
     private ServiceProvider? _serviceProvider;
 
     protected override void OnStartup(StartupEventArgs e)
@@ -18,7 +18,7 @@ public partial class App : Application
         _singleInstanceMutex = new Mutex(true, MutexName, out createdNew);
         if (!createdNew)
         {
-            MessageBox.Show("ThirdHandWin is already running in the system tray.", "ThirdHandWin", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("GhostHand is already running in the system tray.", "GhostHand", MessageBoxButton.OK, MessageBoxImage.Information);
             Shutdown(0);
             return;
         }

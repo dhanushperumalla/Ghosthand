@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>ThirdHandWin.Platform</RootNamespace>
-    <AssemblyName>ThirdHandWin.Platform</AssemblyName>
+    <RootNamespace>GhostHand.Platform</RootNamespace>
+    <AssemblyName>GhostHand.Platform</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ThirdHandWin.Core\ThirdHandWin.Core.csproj" />
+    <ProjectReference Include="..\GhostHand.Core\GhostHand.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

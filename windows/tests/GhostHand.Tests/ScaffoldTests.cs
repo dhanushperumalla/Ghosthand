@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace ThirdHandWin.Tests;
+namespace GhostHand.Tests;
 
 public class ScaffoldTests
 {

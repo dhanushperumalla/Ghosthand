@@ -1,4 +1,4 @@
-namespace ThirdHandWin.Core.Models;
+namespace GhostHand.Core.Models;
 
 public enum AgentOperation
 {

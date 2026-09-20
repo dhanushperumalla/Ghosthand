@@ -1,6 +1,6 @@
-using ThirdHandWin.Core.Interfaces;
+using GhostHand.Core.Interfaces;
 
-namespace ThirdHandWin.Core.Common;
+namespace GhostHand.Core.Common;
 
 public class SystemClock : IClock
 {

@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ThirdHandWin.Cli</RootNamespace>
-    <AssemblyName>ThirdHandWin.Cli</AssemblyName>
+    <RootNamespace>GhostHand.Cli</RootNamespace>
+    <AssemblyName>GhostHand.Cli</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ThirdHandWin.Core\ThirdHandWin.Core.csproj" />
-    <ProjectReference Include="..\ThirdHandWin.Platform\ThirdHandWin.Platform.csproj" />
+    <ProjectReference Include="..\GhostHand.Core\GhostHand.Core.csproj" />
+    <ProjectReference Include="..\GhostHand.Platform\GhostHand.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,9 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Deterministic>true</Deterministic>
-    <Company>ThirdHandWin</Company>
-    <Authors>ThirdHandWin Team</Authors>
-    <Product>ThirdHandWin</Product>
+    <Company>GhostHand</Company>
+    <Authors>GhostHand Team</Authors>
+    <Product>GhostHand</Product>
     <Copyright>Copyright © 2026</Copyright>
   </PropertyGroup>
 </Project>

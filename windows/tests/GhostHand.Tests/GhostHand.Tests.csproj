@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>ThirdHandWin.Tests</RootNamespace>
-    <AssemblyName>ThirdHandWin.Tests</AssemblyName>
+    <RootNamespace>GhostHand.Tests</RootNamespace>
+    <AssemblyName>GhostHand.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ThirdHandWin.Core\ThirdHandWin.Core.csproj" />
+    <ProjectReference Include="..\..\src\GhostHand.Core\GhostHand.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

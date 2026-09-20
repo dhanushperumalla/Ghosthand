@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>ThirdHandWin.Core</RootNamespace>
-    <AssemblyName>ThirdHandWin.Core</AssemblyName>
+    <RootNamespace>GhostHand.Core</RootNamespace>
+    <AssemblyName>GhostHand.Core</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

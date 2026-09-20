@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ThirdHandWin.App</RootNamespace>
-    <AssemblyName>ThirdHandWin.App</AssemblyName>
+    <RootNamespace>GhostHand.App</RootNamespace>
+    <AssemblyName>GhostHand.App</AssemblyName>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ThirdHandWin.Core\ThirdHandWin.Core.csproj" />
-    <ProjectReference Include="..\ThirdHandWin.Platform\ThirdHandWin.Platform.csproj" />
+    <ProjectReference Include="..\GhostHand.Core\GhostHand.Core.csproj" />
+    <ProjectReference Include="..\GhostHand.Platform\GhostHand.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup>

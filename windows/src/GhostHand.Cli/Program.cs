@@ -1,10 +1,10 @@
-namespace ThirdHandWin.Cli;
+namespace GhostHand.Cli;
 
 public static class Program
 {
     public static int Main(string[] args)
     {
-        Console.WriteLine("ThirdHandWin CLI Diagnostic Tool v0.1.0");
+        Console.WriteLine("GhostHand CLI Diagnostic Tool v0.1.0");
 
         if (args.Length == 0)
         {
@@ -24,7 +24,7 @@ public static class Program
 
     private static void PrintUsage()
     {
-        Console.WriteLine("Usage: ThirdHandWin.Cli <command> [options]");
+        Console.WriteLine("Usage: GhostHand.Cli <command> [options]");
         Console.WriteLine();
         Console.WriteLine("Commands:");
         Console.WriteLine("  check      Verify toolchain, credentials, and Jev connectivity");

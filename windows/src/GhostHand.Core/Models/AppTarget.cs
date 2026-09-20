@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace ThirdHandWin.Core.Models;
+namespace GhostHand.Core.Models;
 
 /// <summary>
 /// Information about the foreground / target application and its active window.

@@ -1,6 +1,6 @@
-using ThirdHandWin.Core.Models;
+using GhostHand.Core.Models;
 
-namespace ThirdHandWin.Core.Interfaces;
+namespace GhostHand.Core.Interfaces;
 
 public interface IScreenReader
 {
