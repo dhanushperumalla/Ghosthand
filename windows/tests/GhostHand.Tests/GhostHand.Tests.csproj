@@ -5,10 +5,12 @@
     <AssemblyName>GhostHand.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\GhostHand.Core\GhostHand.Core.csproj" />
+    <ProjectReference Include="..\..\src\GhostHand.Platform\GhostHand.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup>
