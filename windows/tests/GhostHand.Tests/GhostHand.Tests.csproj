@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\GhostHand.Core\GhostHand.Core.csproj" />
     <ProjectReference Include="..\..\src\GhostHand.Platform\GhostHand.Platform.csproj" />
+    <ProjectReference Include="..\..\src\GhostHand.App\GhostHand.App.csproj" />
   </ItemGroup>
 
   <ItemGroup>
