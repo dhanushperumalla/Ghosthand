@@ -9,8 +9,10 @@ using GhostHand.Core.Safety;
 using GhostHand.Core.ScreenReading;
 using GhostHand.Platform.Execution;
 using GhostHand.Platform.Hotkey;
+using GhostHand.Platform.Launcher;
 using GhostHand.Platform.Safety;
 using GhostHand.Platform.ScreenReading;
+using GhostHand.Platform.Speech;
 using GhostHand.Platform.Windowing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -61,6 +63,7 @@ public partial class App : Application
 
         // Pre-create windows (hidden at startup for instant display)
         _popup = new PromptPopupWindow();
+        _popup.SpeechInput = _serviceProvider.GetService<ISpeechInput>();
         _popup.TaskSubmitted += OnTaskSubmitted;
         _popup.Cancelled += OnTaskCancelled;
 
@@ -82,6 +85,8 @@ public partial class App : Application
 
         services.AddSingleton<IWindowCaptureService, WindowCaptureService>();
         services.AddSingleton<IHotkeyService, LowLevelKeyboardHook>();
+        services.AddSingleton<IAppLauncher, AppLauncher>();
+        services.AddSingleton<ISpeechInput, WindowsSpeechService>();
     }
 
     private void OnHotkeyPressed(object? sender, EventArgs e)
@@ -134,7 +139,8 @@ public partial class App : Application
 
                 var ocrService = new WindowsOcrService(NullLogger<WindowsOcrService>.Instance);
                 using var screenReader = new UiaScreenReader(ScreenReaderOptions.Default, ocrService, NullLogger<UiaScreenReader>.Instance);
-                using var actionExecutor = new ActionExecutor(NullLogger<ActionExecutor>.Instance, dryRun: false)
+                var appLauncher = _serviceProvider?.GetService<IAppLauncher>() ?? new AppLauncher();
+                using var actionExecutor = new ActionExecutor(NullLogger<ActionExecutor>.Instance, dryRun: false, appLauncher: appLauncher)
                 {
                     TargetWindowHandle = target.WindowHandle,
                     ExpectedProcessId = target.ProcessId

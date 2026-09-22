@@ -6,6 +6,7 @@ using GhostHand.Core.Models;
 using GhostHand.Core.Safety;
 using GhostHand.Core.ScreenReading;
 using GhostHand.Platform.Execution;
+using GhostHand.Platform.Launcher;
 using GhostHand.Platform.Safety;
 using GhostHand.Platform.ScreenReading;
 using GhostHand.Platform.Windowing;
@@ -362,7 +363,8 @@ public static class Program
 
         var ocrService = new WindowsOcrService(ocrLogger);
         using var screenReader = new UiaScreenReader(ScreenReaderOptions.Default, ocrService, readerLogger);
-        using var actionExecutor = new ActionExecutor(execLogger, dryRun: !isLive);
+        var appLauncher = new AppLauncher();
+        using var actionExecutor = new ActionExecutor(execLogger, dryRun: !isLive, appLauncher: appLauncher);
 
         var loopOptions = new AgentLoopOptions
         {
