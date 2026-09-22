@@ -86,12 +86,6 @@ dotnet test windows/GhostHand.sln
 dotnet publish windows/src/GhostHand.App/GhostHand.App.csproj -c Release -r win-x64 --self-contained true -p:PublishReadyToRun=true -o dist/GhostHand-win-x64
 ```
 
----
-
-## Upstream & Credits
-
-GhostHand is based on [Third Hand](https://github.com/shhivv/third-hand) by Shiv Shanmugam (`shiv@tryisle.com`), licensed under the MIT License. See [NOTICE](NOTICE) for full attribution.
-
 ## License
 
 Licensed under the [MIT License](LICENSE).

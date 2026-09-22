@@ -1,4 +1,4 @@
-# ThirdHandWin — Build Log
+# GhostHand — Build Log
 
 > Append-only log of every work session, milestone, files created, decisions,
 > commands run, test results, and known issues.
