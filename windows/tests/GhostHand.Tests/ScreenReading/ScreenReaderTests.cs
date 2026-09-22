@@ -167,9 +167,9 @@ public class ScreenReaderTests
         sanitizedCard.Should().Contain("[REDACTED_CARD]");
 
         // 3. API key detection
-        var keyText = "Gateway token is vck_2eYKfzonCkT1vkzXnIhUFQy4MKyigaWakdOPjAKTwshv2gKKg538XnQc";
+        var keyText = "Gateway token is vck_dummy_test_key_sample1234567890abcdef";
         var sanitizedKey = SecretSanitizer.Sanitize(keyText, isPassword: false);
-        sanitizedKey.Should().NotContain("vck_2eYKfzonCkT1vkzXnIhUFQy4MKyigaWakdOPjAKTwshv2gKKg538XnQc");
+        sanitizedKey.Should().NotContain("vck_dummy_test_key_sample1234567890abcdef");
         sanitizedKey.Should().Contain("[REDACTED_KEY]");
 
         // 4. Bearer header detection
