@@ -86,7 +86,8 @@ public record EvaluateResponse
         if (!Answers.TryGetValue(questionName, out var element))
             return false;
 
-        if (element.TryGetProperty("probability", out var probProp) && probProp.TryGetDouble(out var p))
+        if (element.TryGetProperty("probability", out var probProp) && probProp.TryGetDouble(out var p) ||
+            element.TryGetProperty("noul", out var noulProp) && noulProp.TryGetDouble(out p))
         {
             probability = p;
             isTrue = p >= 0.5;

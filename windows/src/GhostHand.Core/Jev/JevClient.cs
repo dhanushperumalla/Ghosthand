@@ -36,8 +36,21 @@ public class JevClient : IJevClient
             throw new AuthException("API key is not configured. Set AI_GATEWAY_API_KEY in .env or environment.");
         }
 
-        var url = $"{_options.BaseUrl.TrimEnd('/')}/v1/evaluate";
-        var requestJson = JsonSerializer.Serialize(request, JsonOpts);
+        var url = _options.UseDirectApi
+            ? $"{_options.BaseUrl.TrimEnd('/')}/v1/systemone"
+            : $"{_options.BaseUrl.TrimEnd('/')}/v1/evaluate";
+
+        var requestToSend = _options.UseDirectApi
+            ? request with
+            {
+                Model = _options.ModelId,
+                ProviderOptions = null,
+                Questions = request.Questions.ToDictionary(
+                    pair => pair.Key,
+                    pair => pair.Value with { Type = pair.Value.Type == "boolean" ? "noul" : pair.Value.Type })
+            }
+            : request;
+        var requestJson = JsonSerializer.Serialize(requestToSend, JsonOpts);
 
         var stopwatch = Stopwatch.StartNew();
         int attempts = 0;

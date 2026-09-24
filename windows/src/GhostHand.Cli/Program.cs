@@ -76,7 +76,8 @@ public static class Program
         Console.ResetColor();
 
         Console.WriteLine("\nTesting live Jev model via Vercel AI Gateway...");
-        Console.WriteLine($"  Gateway Base URL: {options.BaseUrl}");
+        Console.WriteLine($"  API Mode: {(options.UseDirectApi ? "Direct TypeSafe API" : "Vercel AI Gateway")}");
+        Console.WriteLine($"  Base URL: {options.BaseUrl}");
         Console.WriteLine($"  Model: {options.ModelId}");
         Console.WriteLine($"  Zero Data Retention: {options.ZeroDataRetention}");
 
@@ -141,7 +142,9 @@ public static class Program
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\n[AUTH ERROR] Authentication failed: {ex.Message}");
-            Console.WriteLine("Please double-check that your AI_GATEWAY_API_KEY in .env is valid.");
+            Console.WriteLine(options.UseDirectApi
+                ? "Please double-check that TYPESAFE_API_KEY in .env is valid."
+                : "Please double-check that AI_GATEWAY_API_KEY in .env is valid.");
             Console.ResetColor();
             return 1;
         }

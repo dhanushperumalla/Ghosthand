@@ -5,6 +5,7 @@ public class JevOptions
     public string BaseUrl { get; set; } = "https://ai-gateway.vercel.sh";
     public string ModelId { get; set; } = "typesafe-ai/jev";
     public string? ApiKey { get; set; }
+    public bool UseDirectApi { get; set; }
     public bool ZeroDataRetention { get; set; } = false;
     public int TimeoutSeconds { get; set; } = 30;
     public int MaxRetries { get; set; } = 4;
@@ -15,16 +16,29 @@ public class JevOptions
     {
         var options = new JevOptions();
 
+        var directKey = Environment.GetEnvironmentVariable("TYPESAFE_API_KEY");
+        if (string.IsNullOrWhiteSpace(directKey))
+            directKey = Environment.GetEnvironmentVariable("JEV_API_KEY");
+
+        if (!string.IsNullOrWhiteSpace(directKey))
+        {
+            options.UseDirectApi = true;
+            options.ApiKey = directKey;
+            options.BaseUrl = Environment.GetEnvironmentVariable("JEV_BASE_URL")?.TrimEnd('/')
+                ?? "https://api.typesafe.ai";
+            options.ModelId = "jev-latest";
+        }
+
         var baseUrl = Environment.GetEnvironmentVariable("AI_GATEWAY_BASE_URL");
-        if (!string.IsNullOrWhiteSpace(baseUrl))
+        if (!options.UseDirectApi && !string.IsNullOrWhiteSpace(baseUrl))
             options.BaseUrl = baseUrl;
 
         var model = Environment.GetEnvironmentVariable("JEV_MODEL");
-        if (!string.IsNullOrWhiteSpace(model))
+        if (!options.UseDirectApi && !string.IsNullOrWhiteSpace(model))
             options.ModelId = model;
 
         var key = Environment.GetEnvironmentVariable("AI_GATEWAY_API_KEY");
-        if (!string.IsNullOrWhiteSpace(key))
+        if (!options.UseDirectApi && !string.IsNullOrWhiteSpace(key))
             options.ApiKey = key;
 
         if (bool.TryParse(Environment.GetEnvironmentVariable("ZERO_DATA_RETENTION"), out var zeroRetention))

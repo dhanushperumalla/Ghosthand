@@ -10,15 +10,17 @@ it using plain text or voice.
 QUICK START:
 ------------------------------------------------------------------------
 1. CONFIGURATION:
-   - Make sure you have a .env file in this directory with your Vercel AI Gateway key:
+    - Make sure you have a .env file in this directory. For a direct TypeSafe/Jev key:
+       TYPESAFE_API_KEY=jev_your_typesafe_key_here
+    - Or use a Vercel AI Gateway key:
      AI_GATEWAY_API_KEY=vck_your_api_key_here
      AI_GATEWAY_ZERO_DATA_RETENTION=false
-   - Alternatively, set the system environment variable AI_GATEWAY_API_KEY.
+    - Alternatively, set TYPESAFE_API_KEY or AI_GATEWAY_API_KEY as a system environment variable.
 
 2. TEST CONNECTION:
    - Double-click CHECK_CONNECTION.bat (or run GhostHand.Cli.exe check).
    - If configured properly, it will show:
-     [SUCCESS] Connected to Jev via Vercel AI Gateway.
+   [SUCCESS] Jev evaluation call returned successfully!
 
 3. START GHOSTHAND:
    - Double-click START_GHOSTHAND.bat (or run GhostHand.App.exe).

@@ -276,6 +276,59 @@ public class JevClientTests
     }
 
     [Fact]
+    public async Task JV09_DirectApi_UsesTypeSafeEndpointAndRequestShape()
+    {
+        HttpRequestMessage? capturedRequest = null;
+        string? capturedBody = null;
+        var handlerMock = new Mock<HttpMessageHandler>();
+        handlerMock.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((request, _) =>
+            {
+                capturedRequest = request;
+                capturedBody = request.Content!.ReadAsStringAsync().GetAwaiter().GetResult();
+            })
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{\"answers\":{}}")
+            });
+
+        var options = new JevOptions
+        {
+            ApiKey = "jev_test_secret",
+            BaseUrl = "https://api.typesafe.ai",
+            ModelId = "jev-latest",
+            UseDirectApi = true
+        };
+        using var httpClient = new HttpClient(handlerMock.Object);
+        var client = new JevClient(httpClient, options, NullLogger<JevClient>.Instance);
+
+        await client.EvaluateAsync(new EvaluateRequest
+        {
+            Model = "typesafe-ai/jev",
+            State = new { goal = "test" },
+            Questions = new Dictionary<string, QuestionDefinition>
+            {
+                ["done"] = QuestionDefinition.Boolean("Is this complete?")
+            },
+            ProviderOptions = new GatewayProviderOptions
+            {
+                Gateway = new GatewayOptions { Only = new List<string> { "typesafe-ai" } }
+            }
+        });
+
+        capturedRequest.Should().NotBeNull();
+        capturedRequest!.RequestUri!.ToString().Should().Be("https://api.typesafe.ai/v1/systemone");
+        capturedRequest.Headers.Authorization!.Parameter.Should().Be("jev_test_secret");
+        capturedBody.Should().Contain("\"model\":\"jev-latest\"");
+        capturedBody.Should().Contain("\"type\":\"noul\"");
+        capturedBody.Should().NotContain("providerOptions");
+    }
+
+    [Fact]
     public async Task JV08_ExecutesTopAction_EvenWithLowConfidence_WithoutThresholdBlock()
     {
         var clientMock = new Mock<IJevClient>();
