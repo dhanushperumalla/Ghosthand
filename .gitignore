@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Studio and .NET build output
 .vs/
 **/bin/
@@ -9,6 +10,9 @@ TestResults/
 *.sln.docstates
 
 # Local credentials and environment files
+=======
+# Local credentials and diagnostics
+>>>>>>> e70404e9dab2f9b3275cdf6803b2d79d3d09262b
 .env
 .env.*
 !.env.example
